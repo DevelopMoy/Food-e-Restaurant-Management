@@ -1,8 +1,7 @@
 package com.company.Panels;
 
-import com.company.DataStructures.Table;
+import com.company.DataStructures.Mesa;
 import com.company.Frames.CuentaFrame;
-import com.company.Frames.MainWindowFrame;
 import com.company.MainData;
 import com.company.SwingComponents;
 import net.miginfocom.swing.MigLayout;
@@ -41,7 +40,7 @@ public class TableManagePanel extends JPanel {
         add(allComp.getTableManageHomeButton(),"align center");
         add(allComp.getTableManageTittle(),"span 2,align center");
         add(new JLabel(" "),"wrap");
-        for (Table e:allData.getMainTableArray()){
+        for (Mesa e:allData.getMainMesaArray()){
             if (index<3){
                 if (e.isAvailable()){
                     add(e.getAvailableTableButton(),"align center");

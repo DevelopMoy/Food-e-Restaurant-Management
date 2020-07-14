@@ -1,14 +1,12 @@
 package com.company.Frames;
 
-import com.company.DataStructures.Table;
+import com.company.DataStructures.Mesa;
 import com.company.MainData;
 import com.company.Panels.CuentaPanel;
-import com.company.Panels.TableManagePanel;
 import com.company.SwingComponents;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class CuentaFrame extends JFrame {
     private CuentaPanel panelPrincipal;
@@ -24,7 +22,7 @@ public class CuentaFrame extends JFrame {
         setVisible(false);
     }
 
-    public void actualizarDatosCuenta(Table mesa){
+    public void actualizarDatosCuenta(Mesa mesa){
         panelPrincipal.actualizarComponentes(mesa);
     }
 }

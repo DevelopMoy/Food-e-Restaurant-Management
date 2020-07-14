@@ -15,9 +15,9 @@ public class SwingComponents {
     //CuentaPanel
     private JTable tablaCuenta = new JTable();
     private JScrollPane contenedorTablaCuenta = new JScrollPane(tablaCuenta);
-    private JComboBox comboBoxCuenta= new JComboBox();
-    private JTextField areaCantidadCuenta=new JTextField();
-    private JTextField montoTotalVenta = new JTextField();
+    private JComboBox<String> comboBoxCuenta= new JComboBox();
+    private JTextField areaCantidadCuenta=new JTextField(11);
+    private JTextField montoTotalVenta = new JTextField(11);
     private JButton goHomeCuenta = new JButton("goHome");
     private JButton botonAgregarCuenta = new JButton();
     private JButton botonClearCuenta = new JButton();
