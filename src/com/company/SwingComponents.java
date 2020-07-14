@@ -19,9 +19,9 @@ public class SwingComponents {
     private JTextField areaCantidadCuenta=new JTextField(11);
     private JTextField montoTotalVenta = new JTextField(11);
     private JButton goHomeCuenta = new JButton("goHome");
-    private JButton botonAgregarCuenta = new JButton();
-    private JButton botonClearCuenta = new JButton();
-    private JButton botonTerminarVentaCuenta = new JButton();
+    private JButton botonAgregarCuenta = new JButton("AgregarProd");
+    private JButton botonClearCuenta = new JButton("Clear");
+    private JButton botonTerminarVentaCuenta = new JButton("TerminarVenta");
 
     public JTable getTablaCuenta() {
         return tablaCuenta;
