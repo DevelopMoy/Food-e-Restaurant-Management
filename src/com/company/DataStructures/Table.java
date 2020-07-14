@@ -49,4 +49,13 @@ public class Table {
         isAvailable = available;
     }
 
+    @Override
+    public String toString() {
+        return "Table{" +
+                "numTable=" + numTable +
+                ", availableTableButton=" + availableTableButton +
+                ", usedTableButton=" + usedTableButton +
+                ", isAvailable=" + isAvailable +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 package com.company.Panels;
 
 import com.company.DataStructures.Table;
+import com.company.Frames.CuentaFrame;
 import com.company.Frames.MainWindowFrame;
 import com.company.MainData;
 import com.company.SwingComponents;
@@ -56,6 +57,22 @@ public class TableManagePanel extends JPanel {
                 }
                 index=0;
             }
+            e.getUsedTableButton().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent x) {
+                    allData.getMainTableManager().setVisible(false);
+                    allData.getCuentaFrame().setVisible(true);
+                    ((CuentaFrame)(allData.getCuentaFrame())).actualizarDatosCuenta(e);
+                }
+            });
+            e.getAvailableTableButton().addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent x) {
+                    allData.getMainTableManager().setVisible(false);
+                    allData.getCuentaFrame().setVisible(true);
+                    ((CuentaFrame)(allData.getCuentaFrame())).actualizarDatosCuenta(e);
+                }
+            });
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.Frames.CuentaFrame;
 import com.company.Frames.MainWindowFrame;
 import com.company.Frames.TableManagerFrame;
 import com.company.Panels.TableManagePanel;
@@ -20,8 +21,10 @@ public class Main {
         SwingComponents allComp=new SwingComponents();
         TableManagerFrame mf = new TableManagerFrame(allComp,allData);
         MainWindowFrame mw = new MainWindowFrame(allComp,allData);
+        CuentaFrame cf= new CuentaFrame(allComp,allData);
         //se agregan los frames creados a la variable compartida, para tener control de su visibilidad
         allData.setMainTableManager(mf);
         allData.setMainWindow(mw);
+        allData.setCuentaFrame(cf);
     }
 }

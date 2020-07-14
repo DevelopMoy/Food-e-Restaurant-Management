@@ -9,25 +9,11 @@ public class MainData {
     private ArrayList<Table> mainTableArray = new ArrayList<>();
     private JFrame mainWindow; //THE MAIN FRAME
     private JFrame mainTableManager; // FRAME THAT CONTAINS THE RESTAURANT TABLES
+    private JFrame cuentaFrame; //PANEL QUE CONTIENE LA CUENTA DE LA MESA
+
 
     public MainData() {
         tableConfig();
-    }
-
-    public void setMainWindow(JFrame mainWindow) {
-        this.mainWindow = mainWindow;
-    }
-
-    public void setMainTableManager(JFrame mainTableManager) {
-        this.mainTableManager = mainTableManager;
-    }
-
-    public JFrame getMainWindow() {
-        return mainWindow;
-    }
-
-    public JFrame getMainTableManager() {
-        return mainTableManager;
     }
 
     private void tableConfig(){
@@ -38,7 +24,29 @@ public class MainData {
             mainTableArray.add(new Table(numTable,availableTableButton,usedTableButton));
         }
     }
+    public void setMainWindow(JFrame mainWindow) {
+        this.mainWindow = mainWindow;
+    }
 
+    public void setMainTableManager(JFrame mainTableManager) {
+        this.mainTableManager = mainTableManager;
+    }
+
+    public void setCuentaFrame(JFrame cuentaFrame) {
+        this.cuentaFrame = cuentaFrame;
+    }
+
+    public JFrame getCuentaFrame() {
+        return cuentaFrame;
+    }
+
+    public JFrame getMainWindow() {
+        return mainWindow;
+    }
+
+    public JFrame getMainTableManager() {
+        return mainTableManager;
+    }
     public ArrayList<Table> getMainTableArray() {
         return mainTableArray;
     }
