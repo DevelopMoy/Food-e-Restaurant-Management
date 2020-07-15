@@ -6,10 +6,11 @@ public class Product {
     private double price;
     private int cantidad;
 
-    public Product(int idProduct, String productName, double price) {
+    public Product(int idProduct, String productName, double price,int cantidad) {
         this.idProduct = idProduct;
         this.productName = productName;
         this.price = price;
+        this.cantidad=cantidad;
     }
 
     public void setCantidad(int cantidad) {

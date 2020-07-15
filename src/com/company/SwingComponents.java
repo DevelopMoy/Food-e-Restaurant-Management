@@ -22,6 +22,11 @@ public class SwingComponents {
     private JButton botonAgregarCuenta = new JButton("AgregarProd");
     private JButton botonClearCuenta = new JButton("Clear");
     private JButton botonTerminarVentaCuenta = new JButton("TerminarVenta");
+    private JButton botonEliminarPlatillo = new JButton("EliminarPlatillo");
+
+    public JButton getBotonEliminarPlatillo() {
+        return botonEliminarPlatillo;
+    }
 
     public JTable getTablaCuenta() {
         return tablaCuenta;

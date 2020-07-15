@@ -3,9 +3,7 @@ package com.company;
 import com.company.DataStructures.Mesa;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class MainData {
@@ -19,6 +17,32 @@ public class MainData {
     public MainData() {
         tableConfig();
         initConnectionToDB();
+    }
+
+    public static double getPriceFromDataBase (String name, Statement mainStatementDB){
+        try {
+            ResultSet res=mainStatementDB.executeQuery("SELECT precio FROM productos WHERE nombre='"+name+"'");
+            if (res.next()){
+                return Double.parseDouble(res.getString(1));
+            }
+            return 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static int getIdFromDataBase (String prodName, Statement mainStatementDB){
+        try {
+            ResultSet res=mainStatementDB.executeQuery("SELECT id FROM productos WHERE nombre='"+prodName+"'");
+            if (res.next()){
+                return Integer.parseInt(res.getString(1));
+            }
+            return 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
     }
 
     public void initConnectionToDB (){
