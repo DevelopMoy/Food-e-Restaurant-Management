@@ -30,6 +30,13 @@ public class MainWindowPanel extends JPanel {
                 allData.getMainTableManager().setVisible(true);
             }
         });
+        allComp.getMainWindAddButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                allData.getMainWindow().setVisible(false);
+                allData.getAddNewProduct().setVisible(true);
+            }
+        });
     }
 
     private void layoutConfig(){

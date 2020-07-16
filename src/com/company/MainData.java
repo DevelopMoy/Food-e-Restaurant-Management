@@ -13,6 +13,7 @@ public class MainData {
     private JFrame mainWindow; //THE MAIN FRAME
     private JFrame mainTableManager; // FRAME THAT CONTAINS THE RESTAURANT TABLES
     private JFrame cuentaFrame; //PANEL QUE CONTIENE LA CUENTA DE LA MESA
+    private JFrame addNewProduct;
 
     public MainData() {
         tableConfig();
@@ -30,6 +31,14 @@ public class MainData {
             throwables.printStackTrace();
         }
         return 0;
+    }
+
+    public JFrame getAddNewProduct() {
+        return addNewProduct;
+    }
+
+    public void setAddNewProduct(JFrame addNewProduct) {
+        this.addNewProduct = addNewProduct;
     }
 
     public static int getIdFromDataBase (String prodName, Statement mainStatementDB){

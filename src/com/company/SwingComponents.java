@@ -23,6 +23,42 @@ public class SwingComponents {
     private JButton botonClearCuenta = new JButton(new ImageIcon("images/botonLimpiar.png"));
     private JButton botonTerminarVentaCuenta = new JButton(new ImageIcon("images/botonVenta.png"));
     private JButton botonEliminarPlatillo = new JButton(new ImageIcon("images/botonEliminar.png"));
+    //Panel add new product
+    private JButton botonHomeAddProduct = new JButton(new ImageIcon("images/homeAzul2.png"));
+    private JButton botonFinalizarAdd = new JButton(new ImageIcon("images/botonAddJButton.png"));
+    private JTextField campoNombre = new JTextField(16);
+    private JTextField campoPrecio = new JTextField(16);
+    private JLabel etiquetaNombre = new JLabel(new ImageIcon("images/etiquetaAdd1.png"));
+    private JLabel etiquetaPrecio = new JLabel(new ImageIcon("images/etiquetaAdd2.png"));
+    private JLabel etiquetaTituloAdd = new JLabel(new ImageIcon("images/tituloVenta2.png"));
+
+    public JTextField getCampoNombre() {
+        return campoNombre;
+    }
+
+    public JTextField getCampoPrecio() {
+        return campoPrecio;
+    }
+
+    public JButton getBotonFinalizarAdd() {
+        return botonFinalizarAdd;
+    }
+
+    public JLabel getEtiquetaNombre() {
+        return etiquetaNombre;
+    }
+
+    public JLabel getEtiquetaPrecio() {
+        return etiquetaPrecio;
+    }
+
+    public JLabel getEtiquetaTituloAdd() {
+        return etiquetaTituloAdd;
+    }
+
+    public JButton getBotonHomeAddProduct() {
+        return botonHomeAddProduct;
+    }
 
     public JButton getBotonEliminarPlatillo() {
         return botonEliminarPlatillo;
