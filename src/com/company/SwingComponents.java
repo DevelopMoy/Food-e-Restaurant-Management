@@ -18,11 +18,11 @@ public class SwingComponents {
     private JComboBox<String> comboBoxCuenta= new JComboBox();
     private JTextField areaCantidadCuenta=new JTextField(11);
     private JTextField montoTotalVenta = new JTextField(11);
-    private JButton goHomeCuenta = new JButton("goHome");
-    private JButton botonAgregarCuenta = new JButton("AgregarProd");
-    private JButton botonClearCuenta = new JButton("Clear");
-    private JButton botonTerminarVentaCuenta = new JButton("TerminarVenta");
-    private JButton botonEliminarPlatillo = new JButton("EliminarPlatillo");
+    private JButton goHomeCuenta = new JButton(new ImageIcon("images/homeAzul.png"));
+    private JButton botonAgregarCuenta = new JButton(new ImageIcon("images/seleccionarAzul.png"));
+    private JButton botonClearCuenta = new JButton(new ImageIcon("images/botonLimpiar.png"));
+    private JButton botonTerminarVentaCuenta = new JButton(new ImageIcon("images/botonVenta.png"));
+    private JButton botonEliminarPlatillo = new JButton(new ImageIcon("images/botonEliminar.png"));
 
     public JButton getBotonEliminarPlatillo() {
         return botonEliminarPlatillo;

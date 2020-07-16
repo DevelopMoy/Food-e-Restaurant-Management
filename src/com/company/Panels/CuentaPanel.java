@@ -7,8 +7,10 @@ import com.company.MainData;
 import com.company.SwingComponents;
 import jdk.nashorn.internal.scripts.JO;
 import net.miginfocom.swing.MigLayout;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -19,7 +21,7 @@ public class CuentaPanel extends JPanel {
     private SwingComponents allComp;
     private MainData allData;
     private JFrame superFrame;
-    private MigLayout mainLayout = new MigLayout("debug","[][][][]","[][][][]");
+    private MigLayout mainLayout = new MigLayout("fillx,filly","[grow][grow][grow][grow]","[][][][]");
     private ProductTableModel modeloTabla=new ProductTableModel(new ArrayList<Product>());
     private JPanel thisPane;
     private Mesa mesaActual;
@@ -35,6 +37,7 @@ public class CuentaPanel extends JPanel {
     }
 
     public void actualizarComponentes(Mesa mesa){//SE ACTUALIZARAN TODOS LOS DATOS DE LA TABLA TOMANDO EN CUENTA LA MESA RECIBIDA POR PARAMETRO
+        allData.getCuentaFrame().setTitle("Food-e Restaurant Management - Mesa "+mesa.getNumTable());
         modeloActual=new ProductTableModel(mesa.getAccountProducts());
         allComp.getTablaCuenta().setModel(modeloActual);
         allComp.getComboBoxCuenta().removeAllItems();
@@ -54,19 +57,28 @@ public class CuentaPanel extends JPanel {
 
     private void layoutConfig(){
         setLayout(mainLayout);
-        add(allComp.getComboBoxCuenta(),"span 2");
-        add(new JLabel("Cantidad"),"split 2");
-        add(allComp.getAreaCantidadCuenta());
-        add(allComp.getBotonAgregarCuenta(),"wrap");
+        allComp.getComboBoxCuenta().setFont(new Font("Times New Roman",Font.BOLD,36));
+        AutoCompleteDecorator.decorate(allComp.getComboBoxCuenta());
+        add(allComp.getComboBoxCuenta(),"width 490!,height 110!,span 2,align center");
+        JLabel nota1=new JLabel("Cantidad");
+        nota1.setFont(new Font("Times New Roman",Font.BOLD,28));
+        add(nota1,"split 2,align center");
+        allComp.getAreaCantidadCuenta().setFont(new Font("Times New Roman",Font.BOLD,34));
+        add(allComp.getAreaCantidadCuenta(),"width 300!, height 80!,align center");
+        add(allComp.getBotonAgregarCuenta(),"wrap,align center");
         allComp.getTablaCuenta().setModel(modeloTabla);
-        add (allComp.getContenedorTablaCuenta(),"span 3");
-        add(new JLabel("Total"),"split 2");
+        allComp.getTablaCuenta().setFont(new Font("Times New Roman",Font.BOLD,28));
+        add (allComp.getContenedorTablaCuenta(),"width 990!,span 3,align center");
+        JLabel nota2=new JLabel("Total");
+        nota2.setFont(new Font("Times New Roman",Font.BOLD,28));
+        add(nota2,"split 2,align center");
         allComp.getMontoTotalVenta().setEnabled(false);
-        add(allComp.getMontoTotalVenta(),"wrap");
-        add(allComp.getBotonClearCuenta());
-        add(allComp.getBotonTerminarVentaCuenta());
-        add(allComp.getBotonEliminarPlatillo());
-        add(allComp.getGoHomeCuenta());
+        allComp.getMontoTotalVenta().setFont(new Font("Times New Roman",Font.BOLD,34));
+        add(allComp.getMontoTotalVenta(),"wrap,align center");
+        add(allComp.getBotonClearCuenta(),"align center");
+        add(allComp.getBotonTerminarVentaCuenta(),"align center");
+        add(allComp.getBotonEliminarPlatillo(),"align center");
+        add(allComp.getGoHomeCuenta(),"align center");
     }
 
     private void actualizarMontoTotal(){
@@ -104,28 +116,35 @@ public class CuentaPanel extends JPanel {
         allComp.getBotonAgregarCuenta().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Integer.parseInt(allComp.getAreaCantidadCuenta().getText())>0){
-                    boolean added = false;
-                    try{
-                        for (Product ex:mesaActual.getAccountProducts()){
-                            if (ex.getProductName().compareTo((String)allComp.getComboBoxCuenta().getSelectedItem())==0){
-                                ex.setCantidad(ex.getCantidad()+Integer.parseInt(allComp.getAreaCantidadCuenta().getText()));
-                                added=true;
-                                break;
+                try{
+                    if (Integer.parseInt(allComp.getAreaCantidadCuenta().getText())>0){
+                        boolean added = false;
+                        try{
+                            for (Product ex:mesaActual.getAccountProducts()){
+                                if (ex.getProductName().compareTo((String)allComp.getComboBoxCuenta().getSelectedItem())==0){
+                                    ex.setCantidad(ex.getCantidad()+Integer.parseInt(allComp.getAreaCantidadCuenta().getText()));
+                                    added=true;
+                                    break;
+                                }
                             }
+                            if (!added){
+                                mesaActual.getAccountProducts().add(new Product(MainData.getIdFromDataBase((String)allComp.getComboBoxCuenta().getSelectedItem(),allData.getMainStatementDB()),(String)allComp.getComboBoxCuenta().getSelectedItem(),MainData.getPriceFromDataBase((String)allComp.getComboBoxCuenta().getSelectedItem(),allData.getMainStatementDB()),Integer.parseInt(allComp.getAreaCantidadCuenta().getText())));
+                            }
+                            modeloActual.fireTableDataChanged();
+                            actualizarMontoTotal();
+                        }catch (Exception ex){
+                            JOptionPane.showMessageDialog(thisPane,"Error: "+ex.getMessage());
                         }
-                        if (!added){
-                            mesaActual.getAccountProducts().add(new Product(MainData.getIdFromDataBase((String)allComp.getComboBoxCuenta().getSelectedItem(),allData.getMainStatementDB()),(String)allComp.getComboBoxCuenta().getSelectedItem(),MainData.getPriceFromDataBase((String)allComp.getComboBoxCuenta().getSelectedItem(),allData.getMainStatementDB()),Integer.parseInt(allComp.getAreaCantidadCuenta().getText())));
-                        }
-                        modeloActual.fireTableDataChanged();
-                        actualizarMontoTotal();
-                    }catch (Exception ex){
-                        JOptionPane.showMessageDialog(thisPane,"Error: "+ex.getMessage());
+                        allComp.getAreaCantidadCuenta().setText("");
+                    }else {
+                        JOptionPane.showMessageDialog(thisPane,"Error, verifique el campo de cantidad");
+                        allComp.getAreaCantidadCuenta().setText("");
                     }
-                    allComp.getAreaCantidadCuenta().setText("");
-                }else {
-                    JOptionPane.showMessageDialog(thisPane,"Error, verifique el campo de cantidad");
-                    allComp.getAreaCantidadCuenta().setText("");
+
+                }catch (NumberFormatException except){
+                    JOptionPane.showMessageDialog(thisPane,"Error, campo vacio o caracteres no permitidos.");
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(thisPane,"Error: "+ex.getMessage());
                 }
             }
         });
