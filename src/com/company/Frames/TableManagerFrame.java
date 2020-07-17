@@ -16,7 +16,7 @@ public class TableManagerFrame extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setIconImage(new ImageIcon("images/icono.png").getImage());
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(1366, 768);
+        setSize((int)displayScreen.getWidth(), (int)displayScreen.getHeight());
         setMinimumSize(new Dimension(1366,768));
         setLocationRelativeTo(null);
         add(new TableManagePanel(allComp,allData,this));

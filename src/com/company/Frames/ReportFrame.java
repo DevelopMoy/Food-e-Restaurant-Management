@@ -17,7 +17,7 @@ public class ReportFrame extends JFrame {
         this.setIconImage(new ImageIcon("images/icono.png").getImage());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(1366, 768);
+        setSize((int)displayScreen.getWidth(), (int)displayScreen.getHeight());
         setMinimumSize(new Dimension(1366,768));
         setLocationRelativeTo(null);
         panelPrincipal=new ReportPanel(allComp,allData,this);

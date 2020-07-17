@@ -46,6 +46,24 @@ public class SearchPanel extends JPanel {
                 allData.getSearchFrame().setVisible(false);
             }
         });
+        allComp.getBotonCambiarPrecio().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    if (!(allComp.getCampoPrecioNuevo().getText().compareTo("")==0)){
+                        double num=Double.parseDouble(allComp.getCampoPrecioNuevo().getText());
+                        if (num>=0){
+                            //UPDATE productos SET precio=50 WHERE nombre='Enchiladas'
+                            allData.getMainStatementDB().executeUpdate("UPDATE productos SET precio="+num+" WHERE nombre='"+allComp.getComboBoxProd().getSelectedItem()+"'");
+                            allComp.getCampoPrecioNuevo().setText("");
+                            actualizarCampoPrecio();
+                        }
+                    }
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(thisPane,"Error, verifique los campos e intente nuevamente");
+                }
+            }
+        });
     }
 
     private void actualizarCampoPrecio (){
