@@ -31,6 +31,57 @@ public class SwingComponents {
     private JLabel etiquetaNombre = new JLabel(new ImageIcon("images/etiquetaAdd1.png"));
     private JLabel etiquetaPrecio = new JLabel(new ImageIcon("images/etiquetaAdd2.png"));
     private JLabel etiquetaTituloAdd = new JLabel(new ImageIcon("images/tituloVenta2.png"));
+    //Report panel
+    private JButton botonHomeReport = new JButton(new ImageIcon("images/botonVolver.png"));
+    private JButton botonGenerarReporte = new JButton(new ImageIcon("images/botonGenerar.png"));
+    private SpinnerDateModel spinModel = new SpinnerDateModel();
+    private SpinnerDateModel spinModel2 = new SpinnerDateModel();
+    private JSpinner campoFecha = new JSpinner(spinModel);
+    private JSpinner campoFecha2 = new JSpinner(spinModel2);
+    private JTable tablaReport=new JTable();
+    private JScrollPane contenedorTablaReport = new JScrollPane(tablaReport);
+    private JLabel etiquetaGanancias = new JLabel("Total Vendido: ");
+    private JTextField campoTotalReport = new JTextField(11);
+
+    public SpinnerDateModel getSpinModel2() {
+        return spinModel2;
+    }
+
+    public JSpinner getCampoFecha2() {
+        return campoFecha2;
+    }
+
+    public JButton getBotonHomeReport() {
+        return botonHomeReport;
+    }
+
+    public JButton getBotonGenerarReporte() {
+        return botonGenerarReporte;
+    }
+
+    public SpinnerDateModel getSpinModel() {
+        return spinModel;
+    }
+
+    public JSpinner getCampoFecha() {
+        return campoFecha;
+    }
+
+    public JTable getTablaReport() {
+        return tablaReport;
+    }
+
+    public JScrollPane getContenedorTablaReport() {
+        return contenedorTablaReport;
+    }
+
+    public JLabel getEtiquetaGanancias() {
+        return etiquetaGanancias;
+    }
+
+    public JTextField getCampoTotalReport() {
+        return campoTotalReport;
+    }
 
     public JTextField getCampoNombre() {
         return campoNombre;

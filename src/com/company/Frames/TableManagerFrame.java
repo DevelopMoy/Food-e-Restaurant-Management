@@ -1,5 +1,6 @@
 package com.company.Frames;
 
+import com.company.ActionWhenClosing;
 import com.company.MainData;
 import com.company.Panels.MainWindowPanel;
 import com.company.Panels.TableManagePanel;
@@ -10,6 +11,7 @@ import java.awt.*;
 
 public class TableManagerFrame extends JFrame {
     public TableManagerFrame(SwingComponents allComp, MainData allData){
+        addWindowListener(new ActionWhenClosing(allData));
         setTitle("Cenaduria Loma Bonita : Food-e");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();

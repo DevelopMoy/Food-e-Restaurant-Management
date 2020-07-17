@@ -14,6 +14,7 @@ public class MainData {
     private JFrame mainTableManager; // FRAME THAT CONTAINS THE RESTAURANT TABLES
     private JFrame cuentaFrame; //PANEL QUE CONTIENE LA CUENTA DE LA MESA
     private JFrame addNewProduct;
+    private JFrame reportFrame;
 
     public MainData() {
         tableConfig();
@@ -70,6 +71,14 @@ public class MainData {
             JButton usedTableButton=new JButton(new ImageIcon("images/Mesas/Used/"+numTable+"_.png"));
             mainMesaArray.add(new Mesa(numTable,availableTableButton,usedTableButton));
         }
+    }
+
+    public JFrame getReportFrame() {
+        return reportFrame;
+    }
+
+    public void setReportFrame(JFrame reportFrame) {
+        this.reportFrame = reportFrame;
     }
 
     public Statement getMainStatementDB() {

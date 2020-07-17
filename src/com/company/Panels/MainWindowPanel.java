@@ -37,6 +37,13 @@ public class MainWindowPanel extends JPanel {
                 allData.getAddNewProduct().setVisible(true);
             }
         });
+        allComp.getMainWindReportButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                allData.getMainWindow().setVisible(false);
+                allData.getReportFrame().setVisible(true);
+            }
+        });
     }
 
     private void layoutConfig(){

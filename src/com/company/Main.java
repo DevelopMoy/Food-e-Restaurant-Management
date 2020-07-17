@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.Frames.AddNewProductFrame;
-import com.company.Frames.CuentaFrame;
-import com.company.Frames.MainWindowFrame;
-import com.company.Frames.TableManagerFrame;
+import com.company.Frames.*;
 import com.company.Panels.TableManagePanel;
 import mdlaf.MaterialLookAndFeel;
 
@@ -24,10 +21,12 @@ public class Main {
         MainWindowFrame mw = new MainWindowFrame(allComp,allData);
         CuentaFrame cf= new CuentaFrame(allComp,allData);
         AddNewProductFrame pf=new AddNewProductFrame(allComp,allData);
+        ReportFrame rf = new ReportFrame(allComp,allData);
         //se agregan los frames creados a la variable compartida, para tener control de su visibilidad
         allData.setMainTableManager(mf);
         allData.setMainWindow(mw);
         allData.setCuentaFrame(cf);
         allData.setAddNewProduct(pf);
+        allData.setReportFrame(rf);
     }
 }

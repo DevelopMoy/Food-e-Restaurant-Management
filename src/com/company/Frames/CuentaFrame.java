@@ -1,5 +1,6 @@
 package com.company.Frames;
 
+import com.company.ActionWhenClosing;
 import com.company.DataStructures.Mesa;
 import com.company.MainData;
 import com.company.Panels.CuentaPanel;
@@ -11,6 +12,7 @@ import java.awt.*;
 public class CuentaFrame extends JFrame {
     private CuentaPanel panelPrincipal;
     public CuentaFrame(SwingComponents allComp, MainData allData){
+        addWindowListener(new ActionWhenClosing(allData));
         setTitle("Cenaduria Loma Bonita : Food-e");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
