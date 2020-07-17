@@ -13,6 +13,7 @@ public class CuentaFrame extends JFrame {
     private CuentaPanel panelPrincipal;
     public CuentaFrame(SwingComponents allComp, MainData allData){
         addWindowListener(new ActionWhenClosing(allData));
+        this.setIconImage(new ImageIcon("images/icono.png").getImage());
         setTitle("Cenaduria Loma Bonita : Food-e");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();

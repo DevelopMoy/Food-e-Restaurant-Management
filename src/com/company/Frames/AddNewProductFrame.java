@@ -13,6 +13,7 @@ public class AddNewProductFrame extends JFrame {
     private AddNewProductPanel panelPrincipal;
     public AddNewProductFrame(SwingComponents allComp, MainData allData){
         setTitle("Cenaduria Loma Bonita : Food-e");
+        this.setIconImage(new ImageIcon("images/icono.png").getImage());
         addWindowListener(new ActionWhenClosing(allData));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();

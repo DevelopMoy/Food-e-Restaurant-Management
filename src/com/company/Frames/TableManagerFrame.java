@@ -14,6 +14,7 @@ public class TableManagerFrame extends JFrame {
         addWindowListener(new ActionWhenClosing(allData));
         setTitle("Cenaduria Loma Bonita : Food-e");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setIconImage(new ImageIcon("images/icono.png").getImage());
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(1366, 768);
         setMinimumSize(new Dimension(1366,768));

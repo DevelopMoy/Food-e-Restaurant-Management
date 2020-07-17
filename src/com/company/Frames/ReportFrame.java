@@ -14,6 +14,7 @@ public class ReportFrame extends JFrame {
     public ReportFrame(SwingComponents allComp, MainData allData){
         addWindowListener(new ActionWhenClosing(allData));
         setTitle("Cenaduria Loma Bonita : Food-e");
+        this.setIconImage(new ImageIcon("images/icono.png").getImage());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(1366, 768);

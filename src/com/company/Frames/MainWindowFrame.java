@@ -11,6 +11,7 @@ import java.awt.*;
 public class MainWindowFrame extends JFrame {
     public MainWindowFrame(SwingComponents allComponents,MainData allData){
         addWindowListener(new ActionWhenClosing(allData));
+        this.setIconImage(new ImageIcon("images/icono.png").getImage());
         setTitle("Cenaduria Loma Bonita : Food-e");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         Dimension displayScreen = Toolkit.getDefaultToolkit().getScreenSize();
