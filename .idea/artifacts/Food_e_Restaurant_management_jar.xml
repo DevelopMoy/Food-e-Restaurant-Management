@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Food-e Restaurant management:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Food_e_Restaurant_management_jar</output-path>
+    <root id="archive" name="Food-e Restaurant management.jar">
+      <element id="module-output" name="Food-e Restaurant management" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/miglayout-3.5.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/mysql-connector-java-8.0.20.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/material-ui-swing-1.1.1_pre-release_6.1-jar-with-dependencies.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/swingx-all-1.6.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

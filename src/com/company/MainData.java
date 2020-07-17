@@ -15,6 +15,7 @@ public class MainData {
     private JFrame cuentaFrame; //PANEL QUE CONTIENE LA CUENTA DE LA MESA
     private JFrame addNewProduct;
     private JFrame reportFrame;
+    private JFrame searchFrame;
 
     public MainData() {
         tableConfig();
@@ -32,6 +33,14 @@ public class MainData {
             throwables.printStackTrace();
         }
         return 0;
+    }
+
+    public JFrame getSearchFrame() {
+        return searchFrame;
+    }
+
+    public void setSearchFrame(JFrame searchFrame) {
+        this.searchFrame = searchFrame;
     }
 
     public JFrame getAddNewProduct() {

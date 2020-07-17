@@ -42,6 +42,42 @@ public class SwingComponents {
     private JScrollPane contenedorTablaReport = new JScrollPane(tablaReport);
     private JLabel etiquetaGanancias = new JLabel("Total Vendido: ");
     private JTextField campoTotalReport = new JTextField(11);
+    //Search panel
+    private JComboBox<String> comboBoxProd=new JComboBox<>();
+    private JLabel etiquetaActual = new JLabel("Precio Actual:");
+    private JLabel etiquetaNueva = new JLabel("Precio Nuevo:");
+    private JTextField campoPrecioActual = new JTextField(11);
+    private JTextField campoPrecioNuevo = new JTextField(11);
+    private JButton botonCambiarPrecio = new JButton(new ImageIcon("images/botonUpdate.png"));
+    private JButton botonVolver = new JButton(new ImageIcon("images/botonVolverBig.png"));
+
+    public JComboBox<String> getComboBoxProd() {
+        return comboBoxProd;
+    }
+
+    public JLabel getEtiquetaActual() {
+        return etiquetaActual;
+    }
+
+    public JLabel getEtiquetaNueva() {
+        return etiquetaNueva;
+    }
+
+    public JTextField getCampoPrecioActual() {
+        return campoPrecioActual;
+    }
+
+    public JTextField getCampoPrecioNuevo() {
+        return campoPrecioNuevo;
+    }
+
+    public JButton getBotonCambiarPrecio() {
+        return botonCambiarPrecio;
+    }
+
+    public JButton getBotonVolver() {
+        return botonVolver;
+    }
 
     public SpinnerDateModel getSpinModel2() {
         return spinModel2;

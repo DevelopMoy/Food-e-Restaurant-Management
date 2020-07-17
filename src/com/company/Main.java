@@ -22,7 +22,9 @@ public class Main {
         CuentaFrame cf= new CuentaFrame(allComp,allData);
         AddNewProductFrame pf=new AddNewProductFrame(allComp,allData);
         ReportFrame rf = new ReportFrame(allComp,allData);
+        SearchFrame sf = new SearchFrame(allComp,allData);
         //se agregan los frames creados a la variable compartida, para tener control de su visibilidad
+        allData.setSearchFrame(sf);
         allData.setMainTableManager(mf);
         allData.setMainWindow(mw);
         allData.setCuentaFrame(cf);

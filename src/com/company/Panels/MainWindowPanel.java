@@ -1,5 +1,6 @@
 package com.company.Panels;
 
+import com.company.Frames.SearchFrame;
 import com.company.MainData;
 import com.company.SwingComponents;
 import net.miginfocom.swing.MigLayout;
@@ -42,6 +43,14 @@ public class MainWindowPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 allData.getMainWindow().setVisible(false);
                 allData.getReportFrame().setVisible(true);
+            }
+        });
+        allComp.getMainWindSearchButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((SearchFrame)allData.getSearchFrame()).actualizarComboBox();
+                allData.getMainWindow().setVisible(false);
+                allData.getSearchFrame().setVisible(true);
             }
         });
     }
