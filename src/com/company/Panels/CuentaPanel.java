@@ -100,6 +100,21 @@ public class CuentaPanel extends JPanel {
                         throwables.printStackTrace();
                     }
                 }
+                while (true){
+                    String montoPagar=JOptionPane.showInputDialog(thisPane,"¿Con cuanto esta pagando el cliente?");
+                    Double cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
+                    try{
+                        Double montoCliente=Double.parseDouble(montoPagar);
+                        if (montoCliente<cantidadTotal){
+                            throw new Exception("El monto introducido es menor al total de la cuenta");
+                        }
+                        JOptionPane.showMessageDialog(thisPane,"Su cambio es: "+(montoCliente-cantidadTotal));
+                        break;
+                    }catch (Exception ex){
+                        JOptionPane.showMessageDialog(thisPane,"Dato no valido: "+ex.getMessage());
+                    }
+
+                }
                 allComp.getAreaCantidadCuenta().setText("");
                 mesaActual.getAccountProducts().clear();
                 modeloActual.fireTableDataChanged();
