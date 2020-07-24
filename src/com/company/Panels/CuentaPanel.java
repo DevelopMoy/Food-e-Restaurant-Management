@@ -15,7 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CuentaPanel extends JPanel {
     private SwingComponents allComp;
@@ -26,6 +28,7 @@ public class CuentaPanel extends JPanel {
     private JPanel thisPane;
     private Mesa mesaActual;
     private ProductTableModel modeloActual;
+    private static int orden=1;
 
     public CuentaPanel(SwingComponents allComp, MainData allData,JFrame superComp){
         this.allComp=allComp;
@@ -81,6 +84,13 @@ public class CuentaPanel extends JPanel {
         add(allComp.getGoHomeCuenta(),"align center");
     }
 
+    private String recortarNombre (String nombre){
+        if(nombre.length()>17){
+            return nombre.substring(0,17);
+        }
+        return nombre;
+    }
+
     private void actualizarMontoTotal(){
         double acum=0;
         for (Product e:mesaActual.getAccountProducts()){
@@ -93,7 +103,16 @@ public class CuentaPanel extends JPanel {
         allComp.getBotonTerminarVentaCuenta().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                StringBuilder fechaString=new StringBuilder();
+                Date fecha=new Date();
+                Double montoCliente = 0d;
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MMM-aaaa");
+                SimpleDateFormat formatoHora = new SimpleDateFormat("hh: mm a");
+                Double cantidadTotal=0D;
+                StringBuilder ticketInfo=new StringBuilder("**Cenaduría Loma Bonita**\n\nFECHA: "+formatoFecha.format(fecha)+"\nHORA: "+formatoHora.format(fecha)+"\nOrden # "+(orden++)+"\nMesa: "+mesaActual.getNumTable()+"\n"+
+                        "-------------------------\nCantidad Producto  Total\n\n");
                 for (Product p:mesaActual.getAccountProducts()){
+                    ticketInfo.append(p.getCantidad()+" "+recortarNombre(p.getProductName())+" $"+(p.getPrice()*p.getCantidad())+"\n");
                     try {
                         allData.getMainStatementDB().executeUpdate("INSERT INTO ventas VALUES ("+p.getIdProduct()+",NOW(),"+p.getPrice()*p.getCantidad()+")");
                     } catch (SQLException throwables) {
@@ -102,9 +121,9 @@ public class CuentaPanel extends JPanel {
                 }
                 while (true){
                     String montoPagar=JOptionPane.showInputDialog(thisPane,"¿Con cuanto esta pagando el cliente?");
-                    Double cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
+                    cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
                     try{
-                        Double montoCliente=Double.parseDouble(montoPagar);
+                        montoCliente=Double.parseDouble(montoPagar);
                         if (montoCliente<cantidadTotal){
                             throw new Exception("El monto introducido es menor al total de la cuenta");
                         }
@@ -113,12 +132,14 @@ public class CuentaPanel extends JPanel {
                     }catch (Exception ex){
                         JOptionPane.showMessageDialog(thisPane,"Dato no valido: "+ex.getMessage());
                     }
-
                 }
+                ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\nUsted Pagó con: "+montoCliente+"\nSu cambio: $"+(montoCliente-cantidadTotal)+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
+                allData.getServicioImpresion().printString("58mm Series Printer",ticketInfo.toString());
                 allComp.getAreaCantidadCuenta().setText("");
                 mesaActual.getAccountProducts().clear();
                 modeloActual.fireTableDataChanged();
                 actualizarMontoTotal();
+                System.out.println(ticketInfo);
             }
         });
         allComp.getGoHomeCuenta().addActionListener(new ActionListener() {

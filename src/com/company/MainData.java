@@ -16,6 +16,7 @@ public class MainData {
     private JFrame addNewProduct;
     private JFrame reportFrame;
     private JFrame searchFrame;
+    private PrinterService servicioImpresion= new PrinterService();
 
     public MainData() {
         tableConfig();
@@ -37,6 +38,10 @@ public class MainData {
 
     public JFrame getSearchFrame() {
         return searchFrame;
+    }
+
+    public PrinterService getServicioImpresion() {
+        return servicioImpresion;
     }
 
     public void setSearchFrame(JFrame searchFrame) {
