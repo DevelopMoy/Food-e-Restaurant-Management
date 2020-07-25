@@ -133,7 +133,7 @@ public class CuentaPanel extends JPanel {
                         JOptionPane.showMessageDialog(thisPane,"Dato no valido: "+ex.getMessage());
                     }
                 }
-                ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\nUsted Pagó con: "+montoCliente+"\nSu cambio: $"+(montoCliente-cantidadTotal)+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
+                ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
                 allData.getServicioImpresion().printString("58mm Series Printer",ticketInfo.toString());
                 allComp.getAreaCantidadCuenta().setText("");
                 mesaActual.getAccountProducts().clear();
