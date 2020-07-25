@@ -119,7 +119,7 @@ public class CuentaPanel extends JPanel {
                         throwables.printStackTrace();
                     }
                 }
-                while (true){
+                /*while (true){
                     String montoPagar=JOptionPane.showInputDialog(thisPane,"¿Con cuanto esta pagando el cliente?");
                     cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
                     try{
@@ -132,9 +132,12 @@ public class CuentaPanel extends JPanel {
                     }catch (Exception ex){
                         JOptionPane.showMessageDialog(thisPane,"Dato no valido: "+ex.getMessage());
                     }
+                }*/
+                int opcionImprimir=JOptionPane.showConfirmDialog(thisPane,"¿Desea imprimir su ticket?");
+                if (opcionImprimir==JOptionPane.YES_OPTION){
+                    ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
+                    allData.getServicioImpresion().printString("58mm Series Printer",ticketInfo.toString());
                 }
-                ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
-                allData.getServicioImpresion().printString("58mm Series Printer",ticketInfo.toString());
                 allComp.getAreaCantidadCuenta().setText("");
                 mesaActual.getAccountProducts().clear();
                 modeloActual.fireTableDataChanged();
