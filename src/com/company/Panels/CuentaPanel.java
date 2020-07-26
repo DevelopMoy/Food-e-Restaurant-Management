@@ -119,9 +119,9 @@ public class CuentaPanel extends JPanel {
                         throwables.printStackTrace();
                     }
                 }
+                cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
                 /*while (true){
                     String montoPagar=JOptionPane.showInputDialog(thisPane,"¿Con cuanto esta pagando el cliente?");
-                    cantidadTotal = Double.parseDouble(allComp.getMontoTotalVenta().getText());
                     try{
                         montoCliente=Double.parseDouble(montoPagar);
                         if (montoCliente<cantidadTotal){
@@ -134,8 +134,8 @@ public class CuentaPanel extends JPanel {
                     }
                 }*/
                 int opcionImprimir=JOptionPane.showConfirmDialog(thisPane,"¿Desea imprimir su ticket?");
+                ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
                 if (opcionImprimir==JOptionPane.YES_OPTION){
-                    ticketInfo.append("\nTotal a pagar: "+cantidadTotal+"\n\n** GRACIAS POR SU COMPRA **\n\n\n\n\n");
                     allData.getServicioImpresion().printString("58mm Series Printer",ticketInfo.toString());
                 }
                 allComp.getAreaCantidadCuenta().setText("");
