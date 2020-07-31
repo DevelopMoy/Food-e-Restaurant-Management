@@ -99,18 +99,19 @@ public class SearchPanel extends JPanel {
     private void configLayout (){
         AutoCompleteDecorator.decorate(allComp.getComboBoxProd());
         allComp.getComboBoxProd().setFont(new Font("Times New Roman",Font.BOLD,60));
-        add(allComp.getComboBoxProd(),"width 800!,height 150!,span,align center,wrap");
+        add(allComp.getComboBoxProd(),"width 800!,height 150!,align right");
+        add(allComp.getEraseProductButton(),"align center, wrap");
         allComp.getEtiquetaActual().setFont(new Font("Times New Roman",Font.BOLD,48));
-        add(allComp.getEtiquetaActual(),"align right");
+        add(allComp.getEtiquetaActual(),"align center");
         allComp.getCampoPrecioActual().setEnabled(false);
         allComp.getCampoPrecioActual().setFont(new Font("Times New Roman",Font.BOLD,40));
-        add(allComp.getCampoPrecioActual(),"width 550!,height 110!,wrap");
+        add(allComp.getCampoPrecioActual(),"width 550!,height 110!,align left,wrap");
         allComp.getEtiquetaNueva().setFont(new Font("Times New Roman",Font.BOLD,48));
-        add(allComp.getEtiquetaNueva(),"align right");
+        add(allComp.getEtiquetaNueva(),"align center");
         allComp.getCampoPrecioNuevo().setFont(new Font("Times New Roman",Font.BOLD,40));
-        add(allComp.getCampoPrecioNuevo(),"width 550!,height 110!,wrap");
-        add(allComp.getBotonCambiarPrecio(),"align right");
-        add(allComp.getBotonVolver(),"align center");
+        add(allComp.getCampoPrecioNuevo(),"width 550!,height 110!,align left,wrap");
+        add(allComp.getBotonCambiarPrecio(),"align center");
+        add(allComp.getBotonVolver(),"align left");
     }
 
 

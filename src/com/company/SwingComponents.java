@@ -50,6 +50,11 @@ public class SwingComponents {
     private JTextField campoPrecioNuevo = new JTextField(11);
     private JButton botonCambiarPrecio = new JButton(new ImageIcon("images/botonUpdate.png"));
     private JButton botonVolver = new JButton(new ImageIcon("images/botonVolverBig.png"));
+    private JButton eraseProductButton = new JButton(new ImageIcon("images/botonBorrar.png"));
+
+    public JButton getEraseProductButton() {
+        return eraseProductButton;
+    }
 
     public JComboBox<String> getComboBoxProd() {
         return comboBoxProd;
