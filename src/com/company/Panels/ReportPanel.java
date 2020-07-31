@@ -53,7 +53,7 @@ public class ReportPanel extends JPanel {
                 String fecha2 = DateFormat.getDateInstance().format(allComp.getCampoFecha2().getValue());
                 double acum=0;
                 try {
-                    ResultSet resultado = allData.getMainStatementDB().executeQuery("SELECT productos.nombre,ventas.fecha,ventas.montoTotal FROM ventas INNER JOIN productos ON ventas.id=productos.id WHERE ventas.fecha BETWEEN '"+formatDate(fecha1)+"' AND '"+formatDate(fecha2)+"'");
+                    ResultSet resultado = allData.getMainStatementDB().executeQuery("SELECT productos.nombre,ventas.fecha,ventas.montoTotal FROM ventas LEFT JOIN productos ON ventas.id=productos.id WHERE ventas.fecha BETWEEN '"+formatDate(fecha1)+"' AND '"+formatDate(fecha2)+"'");
                     while (resultado.next()){
                         arregloDatos.add(new ReportField(resultado.getString(1),resultado.getString(2),Double.parseDouble(resultado.getString(3))));
                         acum+=Double.parseDouble(resultado.getString(3));
