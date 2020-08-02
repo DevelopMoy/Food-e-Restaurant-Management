@@ -71,6 +71,19 @@ public class ReportPanel extends JPanel {
 
     private String formatDate (String fecha){
         StringBuilder st=new StringBuilder();
+        int acum=0;
+        for (int i=0;i<fecha.length();i++){
+            if (fecha.charAt(i) == '/') {
+                break;
+            }else{
+                acum++;
+            }
+        }
+        System.out.println("Acum:"+acum);
+        if (acum==1){
+            fecha="0"+fecha;
+        }
+        System.out.println(fecha);
         st.append(fecha.substring(6,10));
         st.append("-");
         st.append(fecha.substring(3,5));
