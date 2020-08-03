@@ -17,6 +17,10 @@ public class Mesa {
         this.usedTableButton = usedTableButton;
     }
 
+    public void clearAccounts (){
+        accountProducts.clear();
+    }
+
     public ArrayList<Product> getAccountProducts() {
         return accountProducts;
     }

@@ -1,5 +1,6 @@
 package com.company.Panels;
 
+import com.company.DataStructures.Mesa;
 import com.company.MainData;
 import com.company.SwingComponents;
 import jdk.nashorn.internal.scripts.JO;
@@ -32,7 +33,29 @@ public class SearchPanel extends JPanel {
         configLayout();
     }
 
+    private void eliminarProducto(){
+        String prod=(String)allComp.getComboBoxProd().getSelectedItem();
+        int id=MainData.getIdFromDataBase(prod,allData.getMainStatementDB());
+        try{
+            int opc=JOptionPane.showConfirmDialog(thisPane,"Desea eliminar el producto? Se vaciaran todas las cuentas abiertas.");
+            if (opc==JOptionPane.YES_OPTION){
+                allData.getMainStatementDB().executeUpdate("DELETE FROM productos WHERE id="+id);
+                for (Mesa x : allData.getMainMesaArray()){
+                    x.clearAccounts();
+                }
+                actualizarProductos();           }
+        }catch (Exception ex){
+            JOptionPane.showMessageDialog(thisPane,"Error: "+ex.getMessage());
+        }
+    }
+
     private void configEvents(){
+        allComp.getEraseProductButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eliminarProducto();
+            }
+        });
         allComp.getComboBoxProd().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
